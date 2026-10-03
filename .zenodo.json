@@ -1,0 +1,14 @@
+{
+  "title": "Deployment-aware optimization in MP-SPDZ: code, data and figure scripts",
+  "upload_type": "software",
+  "description": "MP-SPDZ programs, experimental measurements, the DAPS implementation (Algorithm 5), analytical models and figure scripts accompanying the article 'Deployment-aware optimization in MP-SPDZ: Compiler characterization, batching, and backend selection'. The repository reproduces all analytical tables and figures of the article.",
+  "creators": [
+    {"name": "Kudzordzi, Light", "affiliation": "Department of Information Technology Education, University of Skills Training and Entrepreneurial Development, Kumasi, Ghana", "orcid": "0009-0008-4617-204X"},
+    {"name": "Asante, George", "affiliation": "Department of Information Technology Education, University of Skills Training and Entrepreneurial Development, Kumasi, Ghana", "orcid": "0000-0001-8061-5387"},
+    {"name": "Asiedu, William", "affiliation": "Department of Information Technology Education, University of Skills Training and Entrepreneurial Development, Kumasi, Ghana", "orcid": "0000-0002-1161-9226"},
+    {"name": "Osei-Wusu, Franco", "affiliation": "Department of Information Technology Education, University of Skills Training and Entrepreneurial Development, Kumasi, Ghana", "orcid": "0000-0001-8997-7077"}
+  ],
+  "license": "mit",
+  "access_right": "open",
+  "keywords": ["secure multi-party computation", "SPDZ", "MP-SPDZ", "batching", "round complexity", "deployment-aware optimization"]
+}
