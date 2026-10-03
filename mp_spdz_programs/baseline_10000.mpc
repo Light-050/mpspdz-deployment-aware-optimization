@@ -1,0 +1,15 @@
+from Compiler.types import sint
+from Compiler.library import print_ln
+
+a = sint.Array(10000)
+b = sint.Array(10000)
+
+for i in range(10000):
+    a[i] = sint(i + 1)
+    b[i] = sint(i + 1)
+
+results = sint.Array(10000)
+for i in range(10000):
+    results[i] = a[i] * b[i]
+
+print_ln("done: %s", results[9999].reveal())

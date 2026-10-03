@@ -1,0 +1,306 @@
+=== mascot_nomerge_BA_n10_M10000_run1.txt ===
+Time = 86.9179 seconds 
+Data sent = 1756.35 MB in ~5035 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n10_M10000_run2.txt ===
+Time = 87.4241 seconds 
+Data sent = 1756.35 MB in ~5035 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n10_M10000_run3.txt ===
+Time = 92.937 seconds 
+Data sent = 1756.35 MB in ~5035 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n10_M1000_run1.txt ===
+Time = 14.4633 seconds 
+Data sent = 175.724 MB in ~607 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n10_M1000_run2.txt ===
+Time = 14.4283 seconds 
+Data sent = 175.724 MB in ~607 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n10_M1000_run3.txt ===
+Time = 16.0615 seconds 
+Data sent = 175.724 MB in ~607 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n10_M100_run1.txt ===
+Time = 5.17566 seconds 
+Data sent = 17.7415 MB in ~283 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n10_M100_run2.txt ===
+Time = 3.41986 seconds 
+Data sent = 17.7415 MB in ~283 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n10_M100_run3.txt ===
+Time = 3.89071 seconds 
+Data sent = 17.7415 MB in ~283 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n2_M10000_run1.txt ===
+Time = 3.02903 seconds 
+Data sent = 195.15 MB in ~619 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n2_M10000_run2.txt ===
+Time = 2.88868 seconds 
+Data sent = 195.15 MB in ~619 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n2_M10000_run3.txt ===
+Time = 3.34079 seconds 
+Data sent = 195.15 MB in ~619 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n2_M1000_run1.txt ===
+Time = 0.499368 seconds 
+Data sent = 19.5249 MB in ~79 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n2_M1000_run2.txt ===
+Time = 0.433565 seconds 
+Data sent = 19.5249 MB in ~79 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n2_M1000_run3.txt ===
+Time = 0.550174 seconds 
+Data sent = 19.5249 MB in ~79 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n2_M100_run1.txt ===
+Time = 0.10212 seconds 
+Data sent = 1.97127 MB in ~43 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n2_M100_run2.txt ===
+Time = 0.111592 seconds 
+Data sent = 1.97127 MB in ~43 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n2_M100_run3.txt ===
+Time = 0.0871065 seconds 
+Data sent = 1.97127 MB in ~43 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n3_M10000_run1.txt ===
+Time = 5.4179 seconds 
+Data sent = 390.299 MB in ~1171 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n3_M10000_run2.txt ===
+Time = 5.48291 seconds 
+Data sent = 390.299 MB in ~1171 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n3_M10000_run3.txt ===
+Time = 5.48548 seconds 
+Data sent = 390.299 MB in ~1171 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n3_M1000_run1.txt ===
+Time = 1.14195 seconds 
+Data sent = 39.0497 MB in ~145 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n3_M1000_run2.txt ===
+Time = 1.08575 seconds 
+Data sent = 39.0497 MB in ~145 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n3_M1000_run3.txt ===
+Time = 1.15241 seconds 
+Data sent = 39.0497 MB in ~145 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n3_M100_run1.txt ===
+Time = 0.190557 seconds 
+Data sent = 3.94255 MB in ~73 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n3_M100_run2.txt ===
+Time = 0.183262 seconds 
+Data sent = 3.94255 MB in ~73 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n3_M100_run3.txt ===
+Time = 0.165184 seconds 
+Data sent = 3.94255 MB in ~73 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n5_M10000_run1.txt ===
+Time = 26.8887 seconds 
+Data sent = 780.598 MB in ~2275 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n5_M10000_run2.txt ===
+Time = 28.0603 seconds 
+Data sent = 780.598 MB in ~2275 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n5_M10000_run3.txt ===
+Time = 29.2884 seconds 
+Data sent = 780.598 MB in ~2275 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n5_M1000_run1.txt ===
+Time = 4.86104 seconds 
+Data sent = 78.0995 MB in ~277 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n5_M1000_run2.txt ===
+Time = 4.62097 seconds 
+Data sent = 78.0995 MB in ~277 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n5_M1000_run3.txt ===
+Time = 5.13676 seconds 
+Data sent = 78.0995 MB in ~279 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n5_M100_run1.txt ===
+Time = 0.525845 seconds 
+Data sent = 7.8851 MB in ~133 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n5_M100_run2.txt ===
+Time = 0.491257 seconds 
+Data sent = 7.8851 MB in ~133 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n5_M100_run3.txt ===
+Time = 0.563104 seconds 
+Data sent = 7.8851 MB in ~133 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n10_M10000_run1.txt ===
+Time = 112.276 seconds 
+Data sent = 1756.35 MB in ~181435 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n10_M10000_run2.txt ===
+Time = 96.3525 seconds 
+Data sent = 1756.35 MB in ~181435 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n10_M10000_run3.txt ===
+Time = 92.9978 seconds 
+Data sent = 1756.35 MB in ~181435 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n10_M1000_run1.txt ===
+Time = 22.591 seconds 
+Data sent = 175.724 MB in ~18247 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n10_M1000_run2.txt ===
+Time = 14.1896 seconds 
+Data sent = 175.724 MB in ~18247 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n10_M1000_run3.txt ===
+Time = 13.3239 seconds 
+Data sent = 175.724 MB in ~18247 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n10_M100_run1.txt ===
+Time = 3.60504 seconds 
+Data sent = 17.7415 MB in ~2047 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n10_M100_run2.txt ===
+Time = 4.52943 seconds 
+Data sent = 17.7415 MB in ~2047 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n10_M100_run3.txt ===
+Time = 3.86573 seconds 
+Data sent = 17.7415 MB in ~2047 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n2_M10000_run1.txt ===
+Time = 5.12259 seconds 
+Data sent = 195.15 MB in ~20219 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n2_M10000_run2.txt ===
+Time = 5.13595 seconds 
+Data sent = 195.15 MB in ~20219 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n2_M10000_run3.txt ===
+Time = 5.7088 seconds 
+Data sent = 195.15 MB in ~20219 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n2_M1000_run1.txt ===
+Time = 0.795764 seconds 
+Data sent = 19.5249 MB in ~2039 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n2_M1000_run2.txt ===
+Time = 0.673662 seconds 
+Data sent = 19.5249 MB in ~2039 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n2_M1000_run3.txt ===
+Time = 0.683216 seconds 
+Data sent = 19.5249 MB in ~2039 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n2_M100_run1.txt ===
+Time = 0.111021 seconds 
+Data sent = 1.97127 MB in ~239 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n2_M100_run2.txt ===
+Time = 0.094828 seconds 
+Data sent = 1.97127 MB in ~239 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n2_M100_run3.txt ===
+Time = 0.0956057 seconds 
+Data sent = 1.97127 MB in ~239 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n3_M10000_run1.txt ===
+Time = 7.54205 seconds 
+Data sent = 390.299 MB in ~40371 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n3_M10000_run2.txt ===
+Time = 7.2503 seconds 
+Data sent = 390.299 MB in ~40371 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n3_M10000_run3.txt ===
+Time = 9.07468 seconds 
+Data sent = 390.299 MB in ~40371 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n3_M1000_run1.txt ===
+Time = 1.52217 seconds 
+Data sent = 39.0497 MB in ~4065 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n3_M1000_run2.txt ===
+Time = 1.30734 seconds 
+Data sent = 39.0497 MB in ~4065 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n3_M1000_run3.txt ===
+Time = 1.39449 seconds 
+Data sent = 39.0497 MB in ~4065 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n3_M100_run1.txt ===
+Time = 0.185854 seconds 
+Data sent = 3.94255 MB in ~465 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n3_M100_run2.txt ===
+Time = 0.206382 seconds 
+Data sent = 3.94255 MB in ~465 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n3_M100_run3.txt ===
+Time = 0.221081 seconds 
+Data sent = 3.94255 MB in ~465 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n5_M10000_run1.txt ===
+Time = 35.2997 seconds 
+Data sent = 780.598 MB in ~80677 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n5_M10000_run2.txt ===
+Time = 35.1692 seconds 
+Data sent = 780.598 MB in ~80675 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n5_M10000_run3.txt ===
+Time = 32.1701 seconds 
+Data sent = 780.598 MB in ~80675 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n5_M1000_run1.txt ===
+Time = 5.29045 seconds 
+Data sent = 78.0995 MB in ~8117 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n5_M1000_run2.txt ===
+Time = 6.1136 seconds 
+Data sent = 78.0995 MB in ~8117 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n5_M1000_run3.txt ===
+Time = 6.80048 seconds 
+Data sent = 78.0995 MB in ~8117 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n5_M100_run1.txt ===
+Time = 0.593774 seconds 
+Data sent = 7.8851 MB in ~917 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n5_M100_run2.txt ===
+Time = 0.562429 seconds 
+Data sent = 7.8851 MB in ~917 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n5_M100_run3.txt ===
+Time = 0.544937 seconds 
+Data sent = 7.8851 MB in ~917 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BA_n2_M10000_run1.txt ===
+Time = 13.5837 seconds 
+Data sent = 110.44 MB in ~1175 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BA_n2_M10000_run2.txt ===
+Time = 12.6449 seconds 
+Data sent = 110.44 MB in ~1175 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BA_n2_M10000_run3.txt ===
+Time = 13.9106 seconds 
+Data sent = 110.44 MB in ~1175 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BA_n2_M1000_run1.txt ===
+Time = 12.608 seconds 
+Data sent = 110.152 MB in ~815 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BA_n2_M1000_run2.txt ===
+Time = 13.4493 seconds 
+Data sent = 110.152 MB in ~815 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BA_n2_M1000_run3.txt ===
+Time = 12.6714 seconds 
+Data sent = 110.152 MB in ~815 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BA_n3_M10000_run1.txt ===
+Time = 26.3037 seconds 
+Data sent = 220.88 MB in ~2299 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BA_n3_M10000_run2.txt ===
+Time = 27.3955 seconds 
+Data sent = 220.88 MB in ~2299 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BA_n3_M10000_run3.txt ===
+Time = 26.4346 seconds 
+Data sent = 220.88 MB in ~2299 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BA_n5_M10000_run1.txt ===
+Time = 88.6886 seconds 
+Data sent = 441.759 MB in ~4547 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BA_n5_M10000_run2.txt ===
+Time = 75.2398 seconds 
+Data sent = 441.759 MB in ~4547 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BA_n5_M10000_run3.txt ===
+Time = 73.7234 seconds 
+Data sent = 441.759 MB in ~4547 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BA_n5_M1000_run1.txt ===
+Time = 82.9965 seconds 
+Data sent = 440.607 MB in ~3107 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BA_n5_M1000_run2.txt ===
+Time = 74.0346 seconds 
+Data sent = 440.607 MB in ~3107 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BA_n5_M1000_run3.txt ===
+Time = 74.491 seconds 
+Data sent = 440.607 MB in ~3107 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BL_n2_M10000_run1.txt ===
+Time = 17.7779 seconds 
+Data sent = 110.44 MB in ~20775 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BL_n2_M10000_run2.txt ===
+Time = 13.9412 seconds 
+Data sent = 110.44 MB in ~20775 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BL_n2_M10000_run3.txt ===
+Time = 14.104 seconds 
+Data sent = 110.44 MB in ~20775 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BL_n2_M1000_run1.txt ===
+Time = 13.9567 seconds 
+Data sent = 110.152 MB in ~2775 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BL_n2_M1000_run2.txt ===
+Time = 12.842 seconds 
+Data sent = 110.152 MB in ~2775 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BL_n2_M1000_run3.txt ===
+Time = 12.6805 seconds 
+Data sent = 110.152 MB in ~2775 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BL_n3_M10000_run1.txt ===
+Time = 34.2836 seconds 
+Data sent = 220.88 MB in ~41499 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BL_n3_M10000_run2.txt ===
+Time = 28.572 seconds 
+Data sent = 220.88 MB in ~41499 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BL_n3_M10000_run3.txt ===
+Time = 29.1548 seconds 
+Data sent = 220.88 MB in ~41499 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BL_n5_M10000_run1.txt ===
+Time = 93.5307 seconds 
+Data sent = 441.759 MB in ~82947 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BL_n5_M10000_run2.txt ===
+Time = 105.801 seconds 
+Data sent = 441.759 MB in ~82947 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BL_n5_M10000_run3.txt ===
+Time = 95.6349 seconds 
+Data sent = 441.759 MB in ~82947 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BL_n5_M1000_run1.txt ===
+Time = 89.2102 seconds 
+Data sent = 440.607 MB in ~10947 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BL_n5_M1000_run2.txt ===
+Time = 88.7117 seconds 
+Data sent = 440.607 MB in ~10947 rounds (party 0 only; use '-v' for more details)
+=== lowgear_nomerge_BL_n5_M1000_run3.txt ===
+Time = 75.6334 seconds 
+Data sent = 440.607 MB in ~10947 rounds (party 0 only; use '-v' for more details)

@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Deployment-aware optimization in MP-SPDZ: code, data and figure scripts"
+version: 1.0.0
+date-released: 2026-10-03
+license: MIT
+repository-code: "https://github.com/Light-050/mpspdz-deployment-aware-optimization"
+authors:
+  - family-names: Kudzordzi
+    given-names: Light
+    orcid: "https://orcid.org/0009-0008-4617-204X"
+    affiliation: "Department of Information Technology Education, University of Skills Training and Entrepreneurial Development, Kumasi, Ghana"
+  - family-names: Asante
+    given-names: George
+    orcid: "https://orcid.org/0000-0001-8061-5387"
+    affiliation: "Department of Information Technology Education, University of Skills Training and Entrepreneurial Development, Kumasi, Ghana"
+  - family-names: Asiedu
+    given-names: William
+    orcid: "https://orcid.org/0000-0002-1161-9226"
+    affiliation: "Department of Information Technology Education, University of Skills Training and Entrepreneurial Development, Kumasi, Ghana"
+  - family-names: Osei-Wusu
+    given-names: Franco
+    orcid: "https://orcid.org/0000-0001-8997-7077"
+    affiliation: "Department of Information Technology Education, University of Skills Training and Entrepreneurial Development, Kumasi, Ghana"
+keywords: [secure multi-party computation, SPDZ, MP-SPDZ, batching, round complexity]

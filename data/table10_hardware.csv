@@ -1,0 +1,5 @@
+config,mascot_ram,lowgear_ram,min_ram,lowgear_keygen,feasibility
+n=2,<1 GB,~2 GB,2 GB,~13 s,both
+n=3,~2 GB,~5 GB,5 GB,~28 s,both
+n=5,~4 GB,~11 GB,11 GB,~75 min,both (slow LowGear key generation)
+n=10,~8 GB,infeasible (OOM at 11 GB),8 GB,n/a,MASCOT only

@@ -1,0 +1,16 @@
+from Compiler.types import sint, cint, Array
+
+a = Array(1000, sint)
+b = Array(1000, sint)
+for i in range(1000):
+    a[i] = sint(i+1)
+    b[i] = sint(i+2)
+
+results = Array(20, sint)
+for batch in range(20):
+    offset = batch * 50
+    results[batch] = sint.dot_product(
+        [a[offset+j] for j in range(50)],
+        [b[offset+j] for j in range(50)]
+    )
+print_ln("Batched 1000 done: %s", results[19].reveal())

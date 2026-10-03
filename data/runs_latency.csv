@@ -1,0 +1,9 @@
+source_file,mode,latency_ms,time_s,data_sent_MB_party0,rounds
+mascot_nomerge_BL_n2_M10000_lat0ms.txt,BL,0,5.83092,195.15,20219
+mascot_nomerge_BA_n2_M10000_lat0ms.txt,BA,0,3.491,195.15,619
+mascot_nomerge_BL_n2_M10000_lat10ms.txt,BL,10,210.109,195.15,20219
+mascot_nomerge_BA_n2_M10000_lat10ms.txt,BA,10,10.4685,195.15,619
+mascot_nomerge_BL_n2_M10000_lat50ms.txt,BL,50,1022.92,195.15,20219
+mascot_nomerge_BA_n2_M10000_lat50ms.txt,BA,50,36.5092,195.15,619
+mascot_nomerge_BL_n2_M10000_lat100ms.txt,BL,100,2037.35,195.15,20219
+mascot_nomerge_BA_n2_M10000_lat100ms.txt,BA,100,69.3507,195.15,619

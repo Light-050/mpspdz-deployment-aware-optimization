@@ -1,0 +1,4 @@
+compilation_mode,compiler_report,rounds,time_s
+default CISC (baseline),200 dot products,221,3.19
+no-merge -n (baseline),"10,000 multiplications",20219,5.32
+no-merge -n (batched),200 dot products,619,3.09

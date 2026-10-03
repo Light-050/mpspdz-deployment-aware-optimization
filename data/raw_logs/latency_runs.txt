@@ -1,0 +1,24 @@
+=== mascot_nomerge_BA_n2_M10000_lat0ms.txt ===
+Time = 3.491 seconds 
+Data sent = 195.15 MB in ~619 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n2_M10000_lat100ms.txt ===
+Time = 69.3507 seconds 
+Data sent = 195.15 MB in ~619 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n2_M10000_lat10ms.txt ===
+Time = 10.4685 seconds 
+Data sent = 195.15 MB in ~619 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BA_n2_M10000_lat50ms.txt ===
+Time = 36.5092 seconds 
+Data sent = 195.15 MB in ~619 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n2_M10000_lat0ms.txt ===
+Time = 5.83092 seconds 
+Data sent = 195.15 MB in ~20219 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n2_M10000_lat100ms.txt ===
+Time = 2037.35 seconds 
+Data sent = 195.15 MB in ~20219 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n2_M10000_lat10ms.txt ===
+Time = 210.109 seconds 
+Data sent = 195.15 MB in ~20219 rounds (party 0 only; use '-v' for more details)
+=== mascot_nomerge_BL_n2_M10000_lat50ms.txt ===
+Time = 1022.92 seconds 
+Data sent = 195.15 MB in ~20219 rounds (party 0 only; use '-v' for more details)

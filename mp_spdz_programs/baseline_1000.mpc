@@ -1,0 +1,6 @@
+from Compiler.types import sint, cint
+
+a = [sint(i+1) for i in range(1000)]
+b = [sint(i+2) for i in range(1000)]
+results = [a[i] * b[i] for i in range(1000)]
+print_ln("Baseline 1000 done: %s", results[-1].reveal())

@@ -1,0 +1,7 @@
+from Compiler.types import sint, cint
+
+# Baseline: 100 individual multiplications
+a = [sint(i+1) for i in range(100)]
+b = [sint(i+2) for i in range(100)]
+results = [a[i] * b[i] for i in range(100)]
+print_ln("Baseline 100 done: %s", results[-1].reveal())
