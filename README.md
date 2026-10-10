@@ -3,7 +3,7 @@
 Code, MP-SPDZ programs, experimental data and figure scripts for the article:
 
 > Kudzordzi L, Asante G, Asiedu W, Osei-Wusu F. *Deployment-aware optimization in MP-SPDZ: Compiler
-> characterization, batching, and backend selection.* (Under review at PLOS ONE.)
+> characterization, batching, and backend selection.*
 
 The repository reproduces every analytical table and every figure in the article, and contains the MP-SPDZ
 programs and measurements behind the empirical results.
