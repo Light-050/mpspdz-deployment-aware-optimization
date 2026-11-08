@@ -13,6 +13,8 @@ programs and measurements behind the empirical results.
 ```
 mp_spdz_programs/          MP-SPDZ programs: baseline (individual multiplications) and batched (dot products),
                            M = 100, 1,000 and 10,000, batch size B = 50
+  verification/            Programs for the v1.1.0 verification runs: Algorithm 3 with B separate shares,
+                           B = 100 and 200, and the Government and ML Inference scenario configurations
 analysis/
   daps.py                   Algorithm 5 (DAPS); Tables 11-13 and the LowGear compute-basis sensitivity analysis
   complexity_models.py     Complexity and bandwidth models for Algorithms 2 and 3 (Table 2)
@@ -30,6 +32,7 @@ data/
   table6_lowgear_results.csv    LowGear summary: mean, sample sd and 95% CI over 3 runs (Table 6)
   table7_latency_results.csv    Emulated latency 0/10/50/100 ms, MASCOT, n = 2, M = 10,000
   table10_hardware.csv          Observed memory requirements
+  verification_rounds.csv       Rounds and data volume of the v1.1.0 verification runs (deterministic)
   raw_logs/                     Raw MP-SPDZ outputs (time, data sent, rounds) of all 110 measurements
 ```
 
@@ -45,7 +48,7 @@ pip install -r requirements.txt
 
 ```
 cd analysis
-python daps.py                  # Tables 11-13 and the LowGear compute-basis sensitivity (158.8 s / 258.8 s)
+python daps.py                  # Tables 11-13 and the LowGear sensitivity (210.4 s / 229.7 s)
 python deployment_decision.py  # Table 8
 python crossover_analysis.py   # data behind Figs 8-11
 python run_analysis.py         # everything above, plus all figures (use --no-figures to skip them)
@@ -57,6 +60,23 @@ python diagrams.py             # Figs 1-3  -> figures/output/
 
 All DAPS comparison values are model-based predictions from the round-latency model (Equation 1 of the
 article), combining measured round counts with measured or scaled compute times; see the note to Table 12.
+
+### Changes in v1.1.0
+
+Version 1.0.0 scaled batched round counts in proportion to B and baseline round counts with C(n,2). Round
+counts measured at B = 100 and B = 200 (`data/verification_rounds.csv`) showed both assumptions to be wrong.
+All 33 MASCOT round counts measured under `-n` satisfy, within one round,
+
+    R(n, M, B) = 2(n - 1) * ceil(M / B) + c(n, M)
+
+where c(n, M) is a fixed component that batching does not remove. `daps.py` now uses this law, takes c from
+measurement where available, and costs DAPS and Fixed-Batched on the same compute basis (LowGear
+preprocessing assumed offline). DAPS is predicted to outperform Fixed-Batched in four of the five scenarios
+(Healthcare 1.35x, Government 1.49x, ML Inference 1.45x, IoT 1.78x) and to match it in Finance; in every case
+the advantage comes from the batch-size selection. Counting LowGear's measured totals instead
+(`lowgear_sensitivity()`), the Healthcare and ML Inference predictions become 210.4 s and 229.7 s.
+`crossover_analysis.py` now describes the batch-size sensitivity as rising quickly and then saturating
+(the factor 1 - 1/B), not as logarithmic; its numerical output is unchanged.
 
 ## Reproducing the MP-SPDZ experiments
 
