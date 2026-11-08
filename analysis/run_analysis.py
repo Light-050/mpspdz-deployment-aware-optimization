@@ -46,8 +46,8 @@ from daps import (
 
 
 PAPER_TITLE = (
-    "Deployment-Aware Optimization of SPDZ Protocols: Compiler Characterization,\n"
-    "Online Batching, and Backend Selection with Empirical Validation in MP-SPDZ"
+    "Deployment-aware optimization in MP-SPDZ: Compiler characterization,\n"
+    "batching, and backend selection"
 )
 AUTHOR = "Light Kudzordzi, George Asante, William Asiedu, Franco Osei-Wusu"
 TARGET = "PLOS ONE"

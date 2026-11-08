@@ -65,7 +65,7 @@ def sensitivity_analysis(base_n: int = 10, base_M: int = 1000,
     Sensitivity analysis varying one parameter at a time (Figure 8).
     Generates the four subplots:
       (a) Sensitivity to party count n  -> flat line, ~59.7%
-      (b) Sensitivity to batch size B   -> logarithmic increase, diminishing past B~100
+      (b) Sensitivity to batch size B   -> rises quickly, then saturates (factor 1 - 1/B)
       (c) Sensitivity to header size H  -> monotone increase
       (d) Sensitivity to field size log_p -> monotone decrease
 
@@ -149,7 +149,7 @@ def print_sensitivity(results: Dict):
 
     param_labels = {
         'vary_n': ('n (party count)', 'n', 'BW_red constant in n'),
-        'vary_B': ('B (batch size)', 'B', 'logarithmic increase, diminishing past B~100'),
+        'vary_B': ('B (batch size)', 'B', 'rises quickly, then saturates (factor 1 - 1/B)'),
         'vary_H': ('H (header size bits)', 'H', 'monotone increase'),
         'vary_log_p': ('log_p (field size bits)', 'log_p', 'monotone decrease'),
     }

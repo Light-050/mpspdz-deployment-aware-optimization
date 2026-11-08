@@ -41,6 +41,21 @@ KEY FINDING (Table 4):
   Distortion ratio: ~91x
   This finding motivates mandatory use of the -n flag in all comparisons.
 
+VERSION 1.1.0 (November 2026) — ROUND MODEL CORRECTION:
+  Version 1.0.0 scaled batched round counts in proportion to B (doubling B halved
+  the rounds) and scaled baseline rounds with C(n,2). Round counts measured at
+  B = 100 and B = 200 (n = 2, 5, 7) showed both assumptions to be wrong. All 33
+  MASCOT round counts measured under -n satisfy, within one round,
+        R(n, M, B) = 2(n - 1) * ceil(M / B) + c(n, M)
+  where c(n, M) is a fixed component (input sharing, output, MAC check,
+  preprocessing) that batching does not remove. Version 1.1.0 uses this law,
+  with c taken from measurement where available (ROUND_CONSTANT_MEASURED).
+  DAPS and Fixed-Batched are now costed on the same basis: LowGear preprocessing
+  is assumed to be performed offline, so a LowGear configuration is given the
+  online rounds and compute time of MASCOT at the same (n, M, B).
+  lowgear_sensitivity() reports the alternative that counts LowGear's measured
+  totals, including its HE preprocessing and offline rounds.
+
 USAGE:
   python daps.py                    # runs all five deployment scenarios
   python daps.py --scenario custom  # prompts for custom parameters
@@ -210,65 +225,81 @@ class DAPSResult:
 
 # ==============================================================
 # HELPER FUNCTIONS: ROUND COUNT ESTIMATION
-# Scale empirical round counts to untested (n, M) combinations
-# using the C(n,2) party-pair relationship.
+# Measured round law R(n, M, B) = 2(n-1)*ceil(M/B) + c(n, M); see the
+# VERSION 1.1.0 note in the module docstring.
 # ==============================================================
 
+# Fixed round component c(n, M) = R - 2(n-1)*ceil(M/B), from measurement.
+# Sources: Table 5 (B = 1 and B = 50) and verification runs at commit 71631ce9
+# (November 2026): n=2 and n=5 at M=10,000 with B=100 and 200; n=7, M=8,000 with
+# B=1, 50, 100; n=5, M=50,000 with B=50 and 100.
+ROUND_CONSTANT_MEASURED = {
+    (2, 100): 39,   (2, 1000): 39,   (2, 10000): 219,
+    (3, 100): 65,   (3, 1000): 65,   (3, 10000): 371,
+    (5, 100): 117,  (5, 1000): 117,  (5, 10000): 675,  (5, 50000): 3155,
+    (7, 8000): 799,
+    (10, 100): 247, (10, 1000): 247, (10, 10000): 1435,
+}
+# LowGear totals include its HE preprocessing rounds (Table 6): c = 2947 at n = 5.
+LOWGEAR_ROUND_CONSTANT_MEASURED = {(2, 1000): 775, (2, 10000): 775, (3, 10000): 1499,
+                                   (5, 1000): 2947, (5, 10000): 2947}
+
+# Verification measurements (rounds), used directly where they exist.
+MEASURED_ROUNDS = {
+    (2, 10000, 100): 419, (2, 10000, 200): 319,
+    (5, 10000, 100): 1475, (5, 10000, 200): 1075,
+    (7, 8000, 1): 96799, (7, 8000, 50): 2719, (7, 8000, 100): 1759,
+    (5, 50000, 50): 11155, (5, 50000, 100): 7155,
+}
+
+
+def round_constant(n: int, M: int) -> float:
+    """Fixed round component c(n, M) for MASCOT under -n.
+
+    Exact where measured. Otherwise: take the nearest measured party count,
+    interpolate linearly in M between its measured points (extrapolating from
+    the two nearest when M lies outside them), and scale by (n - 1)/(n0 - 1).
+    """
+    if (n, M) in ROUND_CONSTANT_MEASURED:
+        return ROUND_CONSTANT_MEASURED[(n, M)]
+    ns = sorted(set(k[0] for k in ROUND_CONSTANT_MEASURED))
+    n0 = min(ns, key=lambda x: (abs(x - n), -x))
+    pts = sorted((m, c) for (nn, m), c in ROUND_CONSTANT_MEASURED.items() if nn == n0)
+    if len(pts) == 1:
+        c0 = pts[0][1]
+    else:
+        lo = max([p for p in pts if p[0] <= M], default=pts[0], key=lambda p: p[0])
+        hi = min([p for p in pts if p[0] >= M], default=pts[-1], key=lambda p: p[0])
+        if lo[0] == hi[0]:
+            lo, hi = (pts[-2], pts[-1]) if M > pts[-1][0] else (pts[0], pts[1])
+        c0 = lo[1] + (hi[1] - lo[1]) * (M - lo[0]) / (hi[0] - lo[0])
+    return c0 * (n - 1) / (n0 - 1)
+
+
+def predicted_rounds(n: int, M: int, B: int) -> int:
+    """R(n, M, B) = 2(n-1) * ceil(M/B) + c(n, M); measured value if available."""
+    if (n, M, B) in MEASURED_ROUNDS:
+        return MEASURED_ROUNDS[(n, M, B)]
+    if B == 1 and ('MASCOT', n, M) in EMPIRICAL_ROUNDS:
+        return EMPIRICAL_ROUNDS[('MASCOT', n, M)][0]
+    if B == 50 and ('MASCOT', n, M) in EMPIRICAL_ROUNDS:
+        return EMPIRICAL_ROUNDS[('MASCOT', n, M)][1]
+    return int(round(2 * (n - 1) * math.ceil(M / B) + round_constant(n, M)))
+
+
 def estimate_bl_rounds(backend: str, n: int, M: int) -> int:
-    """
-    Estimate BL (unoptimized, -n flag) round count for given backend, n, M.
-    Uses exact empirical value if available; otherwise scales from
-    nearest empirical point using M ratio and C(n,2) party-pair ratio.
-    """
-    key = (backend, n, M)
-    if key in EMPIRICAL_ROUNDS:
-        return EMPIRICAL_ROUNDS[key][0]
-
-    available = [k for k in EMPIRICAL_ROUNDS if k[0] == backend]
-    if not available:
-        # Fallback: scale from MASCOT n=2, M=10000
-        return max(1, int(20219 * (M / 10000) * (n * (n-1) / 2)))
-
-    avail_n = sorted(set(k[1] for k in available))
-    closest_n = min(avail_n, key=lambda x: abs(x - n))
-    avail_M = sorted(set(k[2] for k in available if k[1] == closest_n))
-    closest_M = min(avail_M, key=lambda x: abs(x - M))
-
-    base_rounds = EMPIRICAL_ROUNDS[(backend, closest_n, closest_M)][0]
-    m_scale = M / closest_M
-    n_pairs_base = closest_n * (closest_n - 1) / 2
-    n_pairs_target = n * (n - 1) / 2
-    n_scale = n_pairs_target / n_pairs_base if n_pairs_base > 0 else 1.0
-
-    return max(1, int(base_rounds * m_scale * n_scale))
+    """Unoptimized (-n, B = 1) rounds from the measured round law."""
+    return predicted_rounds(n, M, 1)
 
 
 def estimate_ba_rounds(backend: str, n: int, M: int, B: int) -> int:
-    """
-    Estimate BA (batched, -n flag) round count for given backend, n, M, B.
-    Derives the round reduction ratio at B=50 from empirical data, then
-    scales proportionally for the requested B.
-    """
-    bl = estimate_bl_rounds(backend, n, M)
+    """Batched (-n) rounds from the measured round law.
 
-    key = (backend, n, M)
-    if key in EMPIRICAL_ROUNDS:
-        bl_emp, ba_emp = EMPIRICAL_ROUNDS[key]
-        rr_at_b50 = bl_emp / ba_emp if ba_emp > 0 else 32.7
-    else:
-        available = [k for k in EMPIRICAL_ROUNDS if k[0] == backend]
-        if available:
-            avail_n = sorted(set(k[1] for k in available))
-            closest_n = min(avail_n, key=lambda x: abs(x - n))
-            avail_M = sorted(set(k[2] for k in available if k[1] == closest_n))
-            closest_M = min(avail_M, key=lambda x: abs(x - M))
-            bl_e, ba_e = EMPIRICAL_ROUNDS[(backend, closest_n, closest_M)]
-            rr_at_b50 = bl_e / ba_e if ba_e > 0 else 32.7
-        else:
-            rr_at_b50 = 32.7  # empirical default from n=2, M=10,000
-
-    rr_at_B = rr_at_b50 * (B / 50)
-    return max(2, int(bl / rr_at_B))
+    LowGear configurations are costed on the online basis (preprocessing
+    performed offline), so they take the MASCOT online rounds at the same
+    (n, M, B). lowgear_sensitivity() reports LowGear's measured totals instead.
+    """
+    return predicted_rounds(n, M, B)
 
 
 def estimate_time(backend: str, n: int, M: int,
@@ -276,19 +307,19 @@ def estimate_time(backend: str, n: int, M: int,
     """
     Estimate total execution time: t_compute + rounds * latency_per_round.
     Uses exact empirical t_compute values where available; scales otherwise.
-    Note: EMPIRICAL_TIMES holds MASCOT measurements only. For LowGear
-    configurations the compute component is therefore scaled from the
-    MASCOT n=2 measurement and excludes LowGear HE preprocessing (Table 12
-    note). lowgear_sensitivity() reports the alternative using measured
-    LowGear total times (Table 6).
+    Every strategy is costed on the same compute basis: the MASCOT measurement
+    at (n, M) where one exists, otherwise the MASCOT n=2 value scaled by M and n.
+    For LowGear this assumes HE preprocessing is performed offline (Table 12
+    note); lowgear_sensitivity() reports the alternative using measured
+    LowGear total times and rounds (Table 6).
     t_compute values are at 0ms latency (pure compute component).
     """
     if mode == 'BL':
         rounds = estimate_bl_rounds(backend, n, M)
-        key = (backend, n, M, 'BL')
     else:
         rounds = estimate_ba_rounds(backend, n, M, B)
-        key = (backend, n, M, 'BA')
+    # Same compute basis for every strategy: MASCOT measurement at (n, M).
+    key = ('MASCOT', n, M, mode)
 
     if key in EMPIRICAL_TIMES:
         t_compute = EMPIRICAL_TIMES[key]
@@ -669,9 +700,9 @@ def generate_validation_table(scenarios: List[DeploymentScenario]) -> str:
     lines += [
         "",
         "† DAPS is predicted to outperform Fixed-Batched by more than 5%.",
-        "  In Finance, DAPS selects the same configuration as Fixed-Batched; in ML Inference,",
-        "  its predicted time is within 0.1% of Fixed-Batched.",
-        "  All values are model-based estimates from Equation 1 (see the Table 12 note).",
+        "  In Finance, DAPS selects the same configuration as Fixed-Batched.",
+        "  All values are model-based estimates from Equation 1 using the measured round law",
+        "  R = 2(n-1)*ceil(M/B) + c(n,M); LowGear preprocessing assumed offline (Table 12 note).",
         "",
         "TABLE 13: DAPS PERFORMANCE SUMMARY",
         f"{'Scenario':<14} {'Unoptimized(s)':>15} {'Fixed-Batched(s)':>17} "
@@ -686,8 +717,8 @@ def generate_validation_table(scenarios: List[DeploymentScenario]) -> str:
         dp = daps_performance(scenario, result)
         daps_vs_fb = fb['predicted_time_s'] / dp['predicted_time_s'] if dp['predicted_time_s'] > 0 else 1.0
         marker = ' †' if daps_vs_fb > 1.05 else ''
-        adv = "Backend + B selection" if result.backend == 'LowGear' else \
-              f"B selection ({result.B} vs 50)" if result.B != 50 else "Same configuration as Fixed-Batched"
+        adv = (f"B selection ({result.B} vs 50)" if result.B != 50
+               else "Same configuration as Fixed-Batched")
         lines.append(
             f"{scenario.name:<14} {un['predicted_time_s']:>15.1f} "
             f"{fb['predicted_time_s']:>17.1f} "
@@ -737,28 +768,30 @@ MANUSCRIPT_SCENARIOS = [
 
 def lowgear_sensitivity() -> str:
     """
-    Re-evaluates the two LowGear scenarios using the measured LowGear total
-    time including HE preprocessing (Table 6: n=5, M=10,000, BA = 79.217 s),
-    extrapolated linearly to M=50,000 from the measured M=1,000 (77.174 s)
-    and M=10,000 points. Reproduces the 158.8 s and 258.8 s values in the text.
+    Re-evaluates the two LowGear scenarios counting LowGear's measured totals,
+    i.e. without assuming HE preprocessing is performed offline.
+      Compute: Table 6 batched total at n=5, M=10,000 (79.217 s), extrapolated
+               linearly to M=50,000 from the M=1,000 (77.174 s) point.
+      Rounds:  LowGear round law 2(n-1)*ceil(M/B) + c_LG, with c_LG = 2947 at n=5
+               (Table 6, includes offline rounds); for M=50,000 the MASCOT
+               growth of c between M=10,000 and M=50,000 (+2,480) is added.
     """
-    saved = dict(EMPIRICAL_TIMES)
-    try:
-        EMPIRICAL_TIMES[('LowGear', 5, 10000, 'BA')] = 79.217
-        EMPIRICAL_TIMES[('LowGear', 5, 50000, 'BA')] = round(79.217 + 40000 * (79.217 - 77.174) / 9000, 3)
-        lines = ["LOWGEAR COMPUTE-BASIS SENSITIVITY (measured LowGear totals incl. HE preprocessing)",
-                 "-" * 80]
-        for sc in MANUSCRIPT_SCENARIOS:
-            res = run_daps(sc)
-            if res.backend != 'LowGear':
-                continue
-            fb = fixed_batched_performance(sc)['predicted_time_s']
-            dp = daps_performance(sc, res)['predicted_time_s']
-            lines.append(f"  {sc.name:<14} DAPS {dp:8.1f} s   Fixed-Batched {fb:8.1f} s   ratio {fb/dp:5.2f}x")
-        lines.append("  Government and IoT use MASCOT and are unaffected by this assumption.")
-        return "\n".join(lines)
-    finally:
-        EMPIRICAL_TIMES.clear(); EMPIRICAL_TIMES.update(saved)
+    t_lg = {10000: 79.217, 50000: round(79.217 + 40000 * (79.217 - 77.174) / 9000, 3)}
+    c_lg = {10000: 2947, 50000: 2947 + (ROUND_CONSTANT_MEASURED[(5, 50000)]
+                                        - ROUND_CONSTANT_MEASURED[(5, 10000)])}
+    lines = ["LOWGEAR SENSITIVITY (measured LowGear totals incl. HE preprocessing and offline rounds)",
+             "-" * 86]
+    for sc in MANUSCRIPT_SCENARIOS:
+        res = run_daps(sc)
+        if res.backend != 'LowGear':
+            continue
+        rounds = 2 * (sc.n - 1) * math.ceil(sc.M / res.B) + c_lg[sc.M]
+        dp = round(t_lg[sc.M] + rounds * sc.latency_ms / 1000.0, 1)
+        fb = fixed_batched_performance(sc)['predicted_time_s']
+        lines.append(f"  {sc.name:<14} DAPS {dp:8.1f} s ({rounds:,} rounds)   "
+                     f"Fixed-Batched {fb:8.1f} s   ratio {fb/dp:5.2f}x")
+    lines.append("  Government and IoT use MASCOT and are unaffected by this assumption.")
+    return "\n".join(lines)
 
 # ==============================================================
 # MAIN
