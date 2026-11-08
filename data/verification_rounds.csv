@@ -1,0 +1,13 @@
+program,n,M,B,rounds,data_sent_MB_per_party,note
+batched_10000 (Listing A.6),2,10000,50,619,195.15,reproduces Table 5
+batched_vector_10000,2,10000,50,621,195.15,Algorithm 3 as specified: B separate product shares
+batched_B100_10000,2,10000,100,419,195.15,
+batched_B200_10000,2,10000,200,319,195.15,
+batched_10000 (Listing A.6),5,10000,50,2275,780.598,reproduces Table 5
+batched_B100_10000,5,10000,100,1475,780.598,Healthcare configuration
+batched_B200_10000,5,10000,200,1075,780.598,
+scenario_M8000_B1,7,8000,1,96799,936.731,Government configuration
+scenario_M8000_B50,7,8000,50,2719,936.731,Government configuration
+scenario_M8000_B100,7,8000,100,1759,936.731,Government configuration
+scenario_M50000_B50,5,50000,50,11155,3902.82,ML Inference configuration
+scenario_M50000_B100,5,50000,100,7155,3902.82,ML Inference configuration
