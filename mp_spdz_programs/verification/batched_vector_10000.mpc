@@ -1,0 +1,19 @@
+# Algorithm 3 as specified: each batch of B = 50 multiplications returns
+# B separate product shares (not a summed inner product).
+from Compiler.types import sint
+from Compiler.library import print_ln
+
+a = sint.Array(10000)
+b = sint.Array(10000)
+
+for i in range(10000):
+    a[i] = sint(i + 1)
+    b[i] = sint(i + 1)
+
+results = sint.Array(10000)
+for batch in range(200):
+    start = batch * 50
+    prod = a.get_vector(start, 50) * b.get_vector(start, 50)   # one vectorized Beaver opening
+    results.assign_vector(prod, base=start)                     # 50 separate shares stored
+
+print_ln("done: %s", results[9999].reveal())

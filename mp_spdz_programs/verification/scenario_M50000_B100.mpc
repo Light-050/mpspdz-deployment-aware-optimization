@@ -1,0 +1,12 @@
+from Compiler.types import sint
+from Compiler.library import print_ln
+a = sint.Array(50000)
+b = sint.Array(50000)
+for i in range(50000):
+    a[i] = sint(i + 1)
+    b[i] = sint(i + 1)
+results = sint.Array(500)
+for batch in range(500):
+    start = batch * 100
+    results[batch] = sint.dot_product(a.get_range(start, 100), b.get_range(start, 100))
+print_ln("done: %s", results[499].reveal())
